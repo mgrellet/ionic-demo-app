@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>login</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="form" novalidate class="ion-padding" (ngSubmit)="login()" >
+    <ion-list>
+      <ion-item>
+        <ion-label position="stacked">Mail</ion-label>
+        <ion-input formControlName="email"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Password</ion-label>
+        <ion-input type="password" formControlName="password"></ion-input>
+      </ion-item>
+      <ion-row>
+        <ion-col>
+          <ion-button type="submit" expand="block">Login</ion-button>
+        </ion-col>
+        <ion-col>
+          <ion-button routerLink="/register" type="button" expand="block">Register</ion-button>
+        </ion-col>
+      </ion-row>
+
+    </ion-list>
+  </form>
+
+</ion-content>

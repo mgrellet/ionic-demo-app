@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "ionic-demo-app-e3cae": {
+      "hosting": {
+        "app": [
+          "ionic-demo-app-e3cae"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "ionic-demo-app-e3cae"
+  }
+}
