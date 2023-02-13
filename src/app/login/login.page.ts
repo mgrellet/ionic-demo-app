@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, Validators} from "@angular/forms";
+import {AuthService} from "../services/auth.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-login',
@@ -8,7 +10,9 @@ import {FormBuilder, Validators} from "@angular/forms";
 })
 export class LoginPage implements OnInit {
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(private formBuilder: FormBuilder,
+              private auth: AuthService,
+              private router: Router) { }
 
   form = this.formBuilder.group({
     email: ['', [Validators.email, Validators.required]],
@@ -21,7 +25,13 @@ export class LoginPage implements OnInit {
   login(){
     if(this.form.valid){
       const { email, password} = this.form.getRawValue();
-      console.log(email, password);
+      const theEmail = email || '';
+      const thePassword = password || '';
+      this.auth.login(theEmail, thePassword)
+        .then(user =>{
+          this.router.navigate(["/home"]);
+        })
+        .catch(error => console.log(error));
     } else{
       this.form.markAllAsTouched();
     }
